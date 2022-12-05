@@ -2,6 +2,8 @@ package youareell;
 
 import controllers.*;
 
+import java.io.IOException;
+
 public class YouAreEll {
 
     TransactionController tt;
@@ -20,12 +22,16 @@ public class YouAreEll {
         System.out.println(urlhandler.MakeURLCall("/messages", "GET", ""));
     }
 
-    public String get_ids() {
-        return tt.makecall("/ids", "GET", "");
+    private String MakeURLCall(String s, String get, String s1) {
+        return s + " " + get + " " + s1 + "\n";
     }
 
-    public String get_messages() {
-        return MakeURLCall("/messages", "GET", "");
+    public String get_ids() throws IOException {
+        return tt.makeIdCall("/ids", "GET", "");
+    }
+
+    public String get_messages() throws IOException {
+        return tt.makeMessageCall("/messages", "GET", "");
     }
 
 
